@@ -9,7 +9,7 @@ function NavScrollExample() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
-        <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+        <Navbar.Brand href="#">GameSpeak</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -36,6 +36,7 @@ function NavScrollExample() {
             </NavDropdown>
             <Nav.Link href="#action2">Ajouter un mot</Nav.Link>
             <Nav.Link href="#action2">Se connecter</Nav.Link>
+            <Nav.Link href="#action2">S'enregistrer</Nav.Link>
             <NavDropdown title="Profil" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action4">
                 Mots favoris

@@ -1,13 +1,13 @@
-import React, { useState, useContext } from 'react';
-import { useUserContext } from '../context/UserProvider';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { axiosInstance as axios } from '../http-common/axios-configuration';
+import { useUserContext } from '../context/UserProvider'; // Assurez-vous que le chemin d'accès est correct
 
 const LoginForm = () => {
   const navigate = useNavigate();
   const [credentials, setCredentials] = useState({ email: '', password: '' });
-  const { login } = useUserContext(); 
+  const { authentification } = useUserContext(); // Appel du hook au niveau supérieur
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,9 +20,10 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/login', {email:credentials.email, password:credentials.password});
+      const response = await axios.post('/login', {email: credentials.email, password: credentials.password});
       const token = response.data.token;
       localStorage.setItem('token', token);
+      authentification();
       toast.success('Connexion réussie !', {
         position: "bottom-right",
         autoClose: 5000,

@@ -1,6 +1,14 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "../Home";
 import LoginForm from "../LoginForm";
+import Admin from "../Admin";
+import WordPage from "../admin/words/WordPage";
+import CreateWord from "../admin/words/CreateWord";
+import CategoryPage from "../admin/categories/CategoryPage";
+import UserPage from "../admin/users/UserPage";
+import RegisterForm from "../RegisterForm";
+import EditWord from "../admin/words/EditWord";
+
 
 
 
@@ -9,7 +17,14 @@ const RouterOutlet = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/admin" element={<Admin />} />
       <Route path="/login" element={<LoginForm />} />
+      <Route path="/register" element={<RegisterForm />} />
+      <Route path="/admin/words" element={<WordPage />} />
+      <Route path="/admin/create-word" element={<CreateWord />} />
+      <Route path="/admin/edit-word" element={<EditWord />} />
+      <Route path="/admin/categories" element={<CategoryPage />} />
+      <Route path="/admin/users" element={<UserPage />} />
     </Routes>
   );
 };
