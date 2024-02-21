@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { axiosInstance as axios } from '../../../http-common/axios-configuration';
 import { toast } from 'react-toastify';
@@ -11,6 +11,7 @@ const CreateWord = () => {
   const { user } = useUserContext();
   const [thumbnailPreview, setThumbnailPreview] = useState("");
   const navigate = useNavigate();
+  const [categories, setCategories] = useState([]);
 
   const handleThumbnailChange = (e) => {
     const file = e.target.files[0];
@@ -18,6 +19,20 @@ const CreateWord = () => {
       setThumbnailPreview(URL.createObjectURL(file));
     }
   };
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get('/categories');
+        setCategories(response.data);
+      } catch (error) {
+        console.error('Erreur lors du chargement des catégories', error);
+        toast.error('Erreur lors du chargement des catégories');
+      }
+    };
+
+    fetchCategories();
+  }, []);
 
   const onSubmit = async (data) => {
     const formData = new FormData();
@@ -98,11 +113,16 @@ const CreateWord = () => {
             {errors.image && <span className="error-message">Ce champ est requis</span>}
           </div>
           <div className="form-group">
-            <label>ID Catégorie:</label>
-            {errors.pointCategories_id && (
-              <span className="error-message">Ce champ est requis</span>
-            )}
-          </div>
+        <label>Catégorie:</label>
+        <select {...register("category_id", { required: true })}>
+          {categories.map(category => (
+            <option key={category.id} value={category.id}>{category.name}</option>
+          ))}
+        </select>
+        {errors.category_id && (
+          <span className="error-message">Ce champ est requis</span>
+        )}
+      </div>
           <div>
             <button type="submit" className="button-5">Créer</button>
           </div>
