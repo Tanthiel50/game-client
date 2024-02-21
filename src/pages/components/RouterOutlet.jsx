@@ -22,7 +22,7 @@ const RouterOutlet = () => {
       <Route path="/register" element={<RegisterForm />} />
       <Route path="/admin/words" element={<WordPage />} />
       <Route path="/admin/create-word" element={<CreateWord />} />
-      <Route path="/admin/edit-word" element={<EditWord />} />
+      <Route path="/admin/edit-word/:id" element={<EditWord />} />
       <Route path="/admin/categories" element={<CategoryPage />} />
       <Route path="/admin/users" element={<UserPage />} />
     </Routes>
