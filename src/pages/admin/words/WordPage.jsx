@@ -18,7 +18,7 @@ const WordPage = () => {
             <td>
               {item.image ? (
                 // eslint-disable-next-line jsx-a11y/img-redundant-alt
-                <img src={`url(${item.image})`} alt="image" style={{width: "50px"}} />
+                <img src={`http://127.0.0.1:8000/storage/images/${item.image}`} alt="image" style={{width: "100px"}} />
               ) : (
                 "Pas d'image"
               )}
