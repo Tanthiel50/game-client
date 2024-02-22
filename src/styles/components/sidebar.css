@@ -1,0 +1,40 @@
+.sidebar {
+  width: 200px;
+  height: 100vh;
+  background-color: white;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  color: black;
+}
+
+.sidebar-header {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 20px;
+  text-align: center;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu li {
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: 300;
+}
+
+.sidebar-menu li:hover {
+  background-color: #414146;
+  color: white;
+}
+
+.sidebar-return {
+  margin-top: auto;
+  padding: 20px;
+  font-weight: bold;
+}/*# sourceMappingURL=sidebar.css.map */

@@ -1,5 +1,5 @@
 import React from "react";
-import "../App.css";
+import "../styles/App.scss";
 
 import HeroBanner from "./components/HeroBanner";
 

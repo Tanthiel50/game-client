@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import './styles/App.scss';
 import RouterOutlet from "./pages/components/RouterOutlet";
 import { UserProvider } from "./context/UserProvider";
 import Layout from "./pages/components/layout/Layout";
