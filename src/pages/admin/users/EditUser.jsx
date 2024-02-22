@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useUserContext } from '../../../context/UserProvider';
+import { useNavigate } from 'react-router-dom';
 import Sidebar from "../../components/admin/Sidebar";
 
 const EditUser = () => {
@@ -13,6 +14,7 @@ const EditUser = () => {
   const [thumbnailPreview, setThumbnailPreview] = useState("");
   const [currentThumbnail, setCurrentThumbnail] = useState("");
   const [newThumbnail, setNewThumbnail] = useState(null);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -83,7 +85,7 @@ const EditUser = () => {
             },
         });
         toast.success(`${user.name} a été modifiée avec succès!`);
-        // Redirigez ici après la réussite ou réinitialisez le formulaire
+        navigate('/admin/users');
     }catch (error) {
       // Vérification de la présence d'un message d'erreur dans la réponse du back-end
       if (
