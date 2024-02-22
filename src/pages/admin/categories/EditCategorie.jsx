@@ -58,14 +58,14 @@ function EditCategorie() {
       }
   
       try {
-          await axios.post(`http://127.0.0.1:8000/api/categories/edit/${id}`, formData, {
-              headers: {
-                  'Content-Type': 'multipart/form-data',
-              },
-          });
-          toast.success('La catégorie a été modifiée avec succès!');
+        await axios.post(`http://127.0.0.1:8000/api/categories/edit/${id}`, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+        toast.success(`${article.name} a été modifiée avec succès!`);
         navigate('/admin/categories');
-      }catch (error) {
+      } catch (error) {
         // Vérification de la présence d'un message d'erreur dans la réponse du back-end
         if (
           error.response &&
@@ -98,7 +98,7 @@ function EditCategorie() {
       <div className="admin-container">
         <Sidebar />
         <div className="admin-content">
-          <h1>Modifier la catégorie</h1>
+          <h1>Modifier {article.name}</h1>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-group">
               <label>Catégorie:</label>

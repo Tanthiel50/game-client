@@ -15,8 +15,13 @@ function CreateCategorie() {
     const onSubmit = async (data) => {
       const formData = new FormData();
       for (const key in data) {
-        if (data[key] instanceof FileList) {
-          formData.append(key, data[key][0]);
+        if (key === "category_id") {
+          // Pour chaque catégorie sélectionnée, ajoutez-la au formData
+          data[key].forEach(categoryId => {
+            formData.append('category_id[]', categoryId);
+          });
+        } else if (key === "image" && data[key].length > 0) {
+          formData.append("image", data[key][0]);
         } else {
           formData.append(key, data[key]);
         }

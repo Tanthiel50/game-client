@@ -10,6 +10,8 @@ import RegisterForm from "../RegisterForm";
 import EditWord from "../admin/words/EditWord";
 import CreateCategorie from "../admin/categories/CreateCategorie";
 import EditCategorie from "../admin/categories/EditCategorie";
+import CreateUser from "../admin/users/CreateUser";
+import EditUser from "../admin/users/EditUser";
 
 
 
@@ -29,6 +31,8 @@ const RouterOutlet = () => {
       <Route path="/admin/create-categorie" element={<CreateCategorie />} />
       <Route path="/admin/edit-categorie/:id" element={<EditCategorie />} />
       <Route path="/admin/users" element={<UserPage />} />
+      <Route path="/admin/create-user" element={<CreateUser />} />
+      <Route path="/admin/edit-user/:id" element={<EditUser />} />
     </Routes>
   );
 };

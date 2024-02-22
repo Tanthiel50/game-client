@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { useUserContext } from '../../../context/UserProvider';
 import Sidebar from "../../components/admin/Sidebar";
 
-const EditWord = () => {
+const EditUser = () => {
   const { id } = useParams();
   const { user } = useUserContext();
   const [article, setArticle] = useState(null);
@@ -24,20 +24,20 @@ const EditWord = () => {
     const fetchArticle = async () => {
       try {
         const response = await axios.get(
-          `http://127.0.0.1:8000/api/words/${id}`
+          `http://127.0.0.1:8000/api/users/${id}`
         );
         setArticle(response.data);
 
         // Pré-remplissez le formulaire avec les données existantes
         const fields = [
-          "term",
-          "definition",
-          "image",
+          "name",
+          "email",
+          "avatar",
         ];
         fields.forEach((field) => setValue(field, response.data[field]));
-        if (response.data.image) {
+        if (response.data.avatar) {
           setThumbnailPreview(
-            `http://127.0.0.1:8000/storage/images/${response.data.image}`
+            `http://127.0.0.1:8000/storage/avatar/${response.data.avatar}`
           );
         }
       } catch (error) {
@@ -61,14 +61,14 @@ const EditWord = () => {
     const formData = new FormData();
     Object.keys(data).forEach(key => {
         // Ajoutez toutes les données sauf l'image pour le moment
-        if (key !== "image") {
+        if (key !== "avatar") {
             formData.append(key, data[key]);
         }
     });
 
     // Ajoutez l'image uniquement si une nouvelle a été sélectionnée
     if (newThumbnail) {
-        formData.append("image", newThumbnail);
+        formData.append("avatar", newThumbnail);
     }
 
     // Vérifiez si un utilisateur est attaché et ajoutez son ID
@@ -77,12 +77,12 @@ const EditWord = () => {
     }
 
     try {
-        await axios.post(`http://127.0.0.1:8000/api/words/edit/${id}`, formData, {
+        await axios.post(`http://127.0.0.1:8000/api/users/edit/${id}`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
             },
         });
-        toast.success(`${article.term} a été modifiée avec succès!`);
+        toast.success(`${user.name} a été modifiée avec succès!`);
         // Redirigez ici après la réussite ou réinitialisez le formulaire
     }catch (error) {
       // Vérification de la présence d'un message d'erreur dans la réponse du back-end
@@ -117,17 +117,17 @@ const EditWord = () => {
     <div className="admin-container">
       <Sidebar />
       <div className="admin-content">
-        <h1>Modifier le mot</h1>
+        <h1>Modifier le user</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-group">
-            <label>Mot:</label>
-            <input {...register("term", { required: true })} />
-            {errors.term && <span>Ce champ est requis</span>}
+            <label>Name:</label>
+            <input {...register("name", { required: true })} />
+            {errors.name && <span>Ce champ est requis</span>}
           </div>
           <div className="form-group">
-            <label>Description:</label>
-            <input {...register("definition", { required: true })} />
-            {errors.definition && <span>Ce champ est requis</span>}
+            <label>Email:</label>
+            <input {...register("email", { required: true })} />
+            {errors.email && <span>Ce champ est requis</span>}
           </div>
           <div className="form-group">
             <label>Image actuel:</label>
@@ -140,10 +140,10 @@ const EditWord = () => {
             )}
             <input
               type="file"
-              {...register("image")}
+              {...register("avatar")}
               onChange={handleThumbnailChange}
             />
-            {errors.image && <span>Ce champ est requis</span>}
+            {errors.avatar && <span>Ce champ est requis</span>}
           </div>
           <button type="submit" className="button-5">
             Sauvegarder les modifications
@@ -154,4 +154,4 @@ const EditWord = () => {
   );
 };
 
-export default EditWord;
+export default EditUser;

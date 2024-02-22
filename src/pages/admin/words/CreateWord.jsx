@@ -26,30 +26,36 @@ const CreateWord = () => {
         const response = await axios.get('/categories');
         setCategories(response.data);
       } catch (error) {
-        console.error('Erreur lors du chargement des catégories', error);
         toast.error('Erreur lors du chargement des catégories');
+        console.error('Erreur lors du chargement des catégories', error);
       }
     };
-
+  
     fetchCategories();
   }, []);
 
   const onSubmit = async (data) => {
     const formData = new FormData();
-    for (const key in data) {
-      if (data[key] instanceof FileList) {
-        formData.append(key, data[key][0]);
-      } else {
-        formData.append(key, data[key]);
+    
+    // Ajout des données autres que les catégories et l'image
+    formData.append('term', data.term);
+    formData.append('definition', data.definition);
+    formData.append('user_id', user.id); // Assurez-vous que l'ID utilisateur est correctement récupéré
+    
+    // Gestion des catégories multiples
+    Object.keys(data.categories).forEach(categoryId => {
+      if (data.categories[categoryId]) { // Si la catégorie est cochée
+        formData.append('category_id[]', categoryId);
       }
-    }
-    formData.append('user_id', user.id);
-    if (data.image.length > 0) {
+    });
+  
+    // Gestion de l'image
+    if (data.image && data.image.length > 0) {
       formData.append("image", data.image[0]);
     }
-
+  
     try {
-      await axios.post('http://127.0.0.1:8000/api/words', formData, {
+      const response = await axios.post('http://127.0.0.1:8000/api/words', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -59,10 +65,16 @@ const CreateWord = () => {
       navigate('/admin/words');
     } catch (error) {
       // Vérification de la présence d'un message d'erreur dans la réponse du back-end
-      if (error.response && error.response.data && error.response.data.message) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
         // Si l'erreur contient une structure détaillée (par exemple, des champs spécifiques en erreur)
-        if (typeof error.response.data.message === 'object') {
-          const messages = Object.values(error.response.data.message).join('. ');
+        if (typeof error.response.data.message === "object") {
+          const messages = Object.values(error.response.data.message).join(
+            ". "
+          );
           toast.error(`Erreur : ${messages}`);
         } else {
           // Si l'erreur est une chaîne simple
@@ -70,12 +82,14 @@ const CreateWord = () => {
         }
       } else {
         // Message d'erreur générique si la réponse du back-end ne contient pas de détail
-        toast.error('Une erreur est survenue lors de la création du mot.');
+        toast.error(
+          "Une erreur est survenue lors de la création du mot."
+        );
       }
-      console.error('Erreur de soumission:', error);
+      console.error("Erreur de soumission:", error);
     }
+  };
 
-};
 
 
 
@@ -113,16 +127,17 @@ const CreateWord = () => {
             {errors.image && <span className="error-message">Ce champ est requis</span>}
           </div>
           <div className="form-group">
-        <label>Catégorie:</label>
-        <select {...register("category_id", { required: true })}>
-          {categories.map(category => (
-            <option key={category.id} value={category.id}>{category.name}</option>
-          ))}
-        </select>
-        {errors.category_id && (
-          <span className="error-message">Ce champ est requis</span>
-        )}
-      </div>
+  <label>Catégories:</label>
+  {categories.map(category => (
+    <div key={category.id}>
+      <input
+        type="checkbox"
+        {...register(`categories.${category.id}`)} // Utilisez un objet pour enregistrer les catégories cochées
+      />
+      <label htmlFor={`category-${category.id}`}>{category.name}</label>
+    </div>
+  ))}
+</div>
           <div>
             <button type="submit" className="button-5">Créer</button>
           </div>
