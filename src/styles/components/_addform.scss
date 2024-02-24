@@ -1,45 +1,54 @@
-// ADD
+@use '../base/colors' as colors;
+
+// Styles pour .admin-container
 .admin-container {
-    display: flex;
-    color: var(--dark-color);
-    min-height: 100vh;
-  }
-  
+  display: flex;
+  color: $dark-color;
+  min-height: 100vh;
+
+  // Styles imbriqués pour .admin-content sous .admin-container
   .admin-content {
     flex-grow: 1;
     padding: 20px;
+
+    // Styles spécifiques pour h1 dans .admin-content
+    h1 {
+      color: $primary-color;
+      text-align: center; 
+    }
   }
-  
-  .admin-content h1 {
-    color: var(--primary-color);
-    text-align: center; 
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
+}
+
+// Styles pour .form-group
+.form-group {
+  margin-bottom: 15px;
+
+  label {
     display: block;
     margin-bottom: 5px;
   }
-  
-  .form-group input, .form-group textarea, .form-group select {
+
+  // Imbrication et utilisation de l'opérateur &, qui fait référence au sélecteur parent
+  & input,
+  & textarea,
+  & select {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
     border: 1px solid #333333;
     border-radius: 5px;
-    background-color: var(--primary-color); /* Un bleu profond pour contraster avec le fond */
+    background-color: $primary-color; // Un bleu profond pour contraster avec le fond
     color: #ffffff;
   }
-  
-  .form-group input[type="file"] {
+
+  // Modification de styles pour input de type file
+  input[type="file"] {
     background-color: transparent;
   }
-  
-  /* Ajout de styles pour les messages d'erreur */
-  .error-message {
-    color: #ff3860; /* Rouge pour les erreurs */
-    margin-top: 5px;
-  }
+}
+
+// Styles pour .error-message
+.error-message {
+ // Rouge pour les erreurs
+  margin-top: 5px;
+}

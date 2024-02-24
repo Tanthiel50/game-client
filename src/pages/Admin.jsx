@@ -1,5 +1,6 @@
 import React from "react";
 import Sidebar from "./components/admin/Sidebar";
+import "../styles/App.scss";
 
 
 function Admin() {

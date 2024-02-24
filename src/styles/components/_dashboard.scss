@@ -1,22 +1,26 @@
 .admin-container {
     display: flex;
-  }
   
-  .admin-content {
-    flex-grow: 1;
-    padding: 20px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column; 
-  }
-  .summary-card-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px; 
-    margin-bottom: 20px; 
+    // Styles imbriqués pour .admin-content sous .admin-container
+    .admin-content {
+      flex-grow: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+  
+      // Styles imbriqués pour .summary-card-row sous .admin-content
+      .summary-card-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px; 
+        margin-bottom: 20px; 
+      }
+    }
   }
   
   .table-responsive {
     max-width: 100%;
     overflow-x: auto;
   }
+  
