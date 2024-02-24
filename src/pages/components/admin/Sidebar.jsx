@@ -10,7 +10,8 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="sidebar">
+    <div className="sidebar" style={{ backgroundColor: '#2c3e50', color: 'white' 
+  }}>
       <div className="sidebar-header">
         GameSpeak
       </div>

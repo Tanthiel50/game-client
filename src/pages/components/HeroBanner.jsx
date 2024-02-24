@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 const HeroBanner = () => {
   return (
-    <div className="hero-banner" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/hero.jpeg)` }}>
+    <div className="hero-banner" >
       <Container>
         <Row className="align-items-center">
           <Col md={12} className="text-center">
