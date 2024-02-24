@@ -19,6 +19,7 @@ function Home() {
           </Canvas>
         </div>
        <HeroBanner  />
+       <h2>fhdydhtsthjh</h2>
        <HeroBanner  />
     </div>
   );
