@@ -24,9 +24,11 @@ export default function Axes(props) {
     material.needsUpdate = true;
   }, []);
 
-  useFrame((state, delta) => {
-    axe.current.rotation.y += delta * 0.3;
-    axe.current.rotation.z += delta * 0.3;
+  useFrame(({clock}, delta) => {
+    const time = clock.getElapsedTime()
+    axe.current.rotation.y += delta * 0.2;
+    axe.current.rotation.z += delta * 0.2;
+    axe.current.position.z += (Math.sin(time/6))*0.005;
   });
 
   return (
@@ -36,11 +38,10 @@ export default function Axes(props) {
         ref={axe}
         object={model.scene}
         material={material}
-        scale={1.0 + (Math.random() - 0.5)}
-        position-y={(Math.random() - 0.5) * 16}
-        position-x={(Math.random() - 0.5) * 16}
-        //position-x={axePosition.x}
-        position-z={(Math.random() - 0.5) * 16}
+        scale={1 + (Math.random() - 0.5)}
+        position-y={(Math.random() - 0.5) * 20}
+        position-x={(Math.random() - 0.5) * 20}
+        position-z={(Math.random() - 0.5) * 20}
         rotation={[Math.random() * Math.PI, Math.random() * Math.PI, 0]}
       ></Clone>
     </>

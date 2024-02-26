@@ -1,24 +1,22 @@
 // Base
-@import 'base/_global';
-@import 'base/_reset';
-@import 'base/_colors';
+@import "base/_global";
+@import "base/_reset";
+@import "base/_colors";
 
 // Layout
-@import 'layout/_footer';
-@import 'layout/_navBar';
+@import "layout/_footer";
+@import "layout/_NavBar";
 
 // Components
-@import 'components/_buttons';
-@import 'components/_forms';
-@import 'components/_heroBanner';
-@import 'components/loginForm';
-@import 'components/_heroBanner.scss';
-@import 'components/_dashboard.scss';
-@import 'components/_addForm.scss';
+@import "components/_buttons";
+@import "components/_forms";
+@import "components/_heroBanner";
+@import "components/loginForm";
+@import "components/_heroBanner.scss";
+@import "components/_dashboard.scss";
+@import "components/_addForm.scss";
 
 // Utils
-@import 'utilities/_variables';
-@import 'utilities/_mixins';
-@import 'utilities/_functions';
-
-
+@import "utilities/_variables";
+@import "utilities/_mixins";
+@import "utilities/_functions";
