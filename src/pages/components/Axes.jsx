@@ -6,7 +6,7 @@ import * as THREE from "three";
 const material = new THREE.MeshMatcapMaterial();
 
 export default function Axes(props) {
-  const [matcapTexture] = useMatcapTexture("432322_5E3839_170C0B_543433", 512);
+  const [matcapTexture] = useMatcapTexture("430404_BD9295_7E1E21_94544C", 512);
   const model = useGLTF("./Axe.glb");
   const axePosition = model.scene.position;
   model.scene.traverse((object) => {
@@ -28,7 +28,7 @@ export default function Axes(props) {
     const time = clock.getElapsedTime()
     axe.current.rotation.y += delta * 0.2;
     axe.current.rotation.z += delta * 0.2;
-    axe.current.position.z += (Math.sin(time/6))*0.005;
+    axe.current.position.z += (Math.sin(time/5))*0.005;
   });
 
   return (
@@ -39,9 +39,9 @@ export default function Axes(props) {
         object={model.scene}
         material={material}
         scale={1 + (Math.random() - 0.5)}
-        position-y={(Math.random() - 0.5) * 20}
-        position-x={(Math.random() - 0.5) * 20}
-        position-z={(Math.random() - 0.5) * 20}
+        position-y={(Math.random() - 0.5) * 16}
+        position-x={(Math.random() - 0.5) * 16}
+        position-z={(Math.random() - 0.5) * 16}
         rotation={[Math.random() * Math.PI, Math.random() * Math.PI, 0]}
       ></Clone>
     </>
