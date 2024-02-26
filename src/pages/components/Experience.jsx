@@ -26,7 +26,7 @@ window.addEventListener("scroll", () => {
 export default function Experience() {
   const text3d = useRef();
 
-  const [matcapTexture] = useMatcapTexture("432322_5E3839_170C0B_543433", 512);
+  const [matcapTexture] = useMatcapTexture("430404_BD9295_7E1E21_94544C", 512);
 
   useEffect(() => {
     matcapTexture.colorSpace = THREE.SRGBColorSpace;
@@ -45,7 +45,7 @@ export default function Experience() {
       {/* <Perf position="top-left" /> */}
 
       <OrbitControls makeDefault />
-      <color args={["#59423d"]} attach={"background"} />
+      <color args={["#2b1d1a"]} attach={"background"} />
       <Center>
         <Float rotationIntensity={0} speed={0}>
           <Text3D
@@ -65,7 +65,7 @@ export default function Experience() {
           </Text3D>
         </Float>
       </Center>
-      {[...Array(100).keys()].map((i) => (
+      {[...Array(120).keys()].map((i) => (
         <Axes key={i} />
       ))}
     </>
