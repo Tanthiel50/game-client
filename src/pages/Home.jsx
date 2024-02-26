@@ -14,12 +14,10 @@ function Home() {
     <div className="App">
       <div style={{ position: 'fixed', width: '100%', height: '100%', zIndex: -1 }}>
           <Canvas
-            camera={{ fov: 45, near: 0.1, far: 200, position: [4, -2, 6] }}>
+            camera={{ fov: 45, near: 0.1, far: 200, position: [0, 0, 10] }}>
             <Experience />
           </Canvas>
         </div>
-       <HeroBanner  />
-       <h2>fhdydhtsthjh</h2>
        <HeroBanner  />
     </div>
   );
