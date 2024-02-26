@@ -2,7 +2,6 @@ import React from "react";
 import "../styles/App.scss";
 import { Canvas } from "@react-three/fiber";
 import Experience from "./components/Experience.jsx";
-
 import HeroBanner from "./components/HeroBanner";
 
 function Home() {

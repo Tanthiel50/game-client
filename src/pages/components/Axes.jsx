@@ -8,6 +8,7 @@ const material = new THREE.MeshMatcapMaterial();
 export default function Axes(props) {
   const [matcapTexture] = useMatcapTexture("432322_5E3839_170C0B_543433", 512);
   const model = useGLTF("./Axe.glb");
+  const axePosition = model.scene.position;
   model.scene.traverse((object) => {
     if (object.isMesh) {
       object.material = material;
@@ -38,9 +39,12 @@ export default function Axes(props) {
         scale={1.0 + (Math.random() - 0.5)}
         position-y={(Math.random() - 0.5) * 16}
         position-x={(Math.random() - 0.5) * 16}
+        //position-x={axePosition.x}
         position-z={(Math.random() - 0.5) * 16}
         rotation={[Math.random() * Math.PI, Math.random() * Math.PI, 0]}
       ></Clone>
     </>
   );
 }
+
+useGLTF.preload("./Axe.glb");
