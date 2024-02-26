@@ -12,7 +12,6 @@ import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
 import Axes from "./Axes";
 
-
 // title and axe material 
 const material = new THREE.MeshMatcapMaterial();
 
