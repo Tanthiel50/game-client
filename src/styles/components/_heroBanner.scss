@@ -1,48 +1,47 @@
-@use '../base/colors' as colors;
-
+@use "../base/colors" as colors;
 
 .hero-banner {
-    height: 90vh;
-    background-size: cover;
-    background-position: center;
-    color: white;
-    display: flex;
-    align-items: center; 
-    justify-content: center; 
-    background-color: #ffffff00;
-  }
-  
-  .info-box {
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 4px;
-    background-color: $primary-color;
-  }
-  
+  height: 90vh;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  //background-color: #ff000090;
+}
+
+.info-box {
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 4px;
+  background-color: $primary-color;
+}
+
+h1 {
+  font-size: 4rem !important;
+  font-weight: bolder !important;
+  margin-bottom: 1rem;
+  text-align: left;
+  font-weight: bold;
+  color: $secondary-color;
+}
+
+.subtitle {
+  text-align: left;
+}
+
+p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
   h1 {
-    font-size: 4rem !important;
-    font-weight: bolder !important;
-    margin-bottom: 1rem;
-    text-align: left; 
-    font-weight: bold;
-    color: $secondary-color;
+    font-size: 2rem;
   }
-  
-  .subtitle{
-    text-align: left;
-  }
-  
+
   p {
-    font-size: 1.25rem; 
-    margin-bottom: 2rem;
+    font-size: 1rem;
   }
-  
-  @media (max-width: 768px) {
-    h1 {
-      font-size: 2rem; 
-    }
-  
-    p {
-      font-size: 1rem; 
-    }
-  }
+}

@@ -36,9 +36,9 @@ export default function Axes(props) {
         object={model.scene}
         material={material}
         scale={1.0 + (Math.random() - 0.5)}
-        position-y={(Math.random() - 0.5) * 15}
-        position-x={(Math.random() - 0.5) * 15}
-        position-z={(Math.random() - 0.5) * 15}
+        position-y={(Math.random() - 0.5) * 16}
+        position-x={(Math.random() - 0.5) * 16}
+        position-z={(Math.random() - 0.5) * 16}
         rotation={[Math.random() * Math.PI, Math.random() * Math.PI, 0]}
       ></Clone>
     </>
